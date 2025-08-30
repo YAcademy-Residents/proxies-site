@@ -8,18 +8,15 @@ export default function Home() {
   const [countdown, setCountdown] = useState(3);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const interval = setInterval(() => {
-        setCountdown((prev) => {
-          if (prev === 1) {
-            clearInterval(interval);
-            const newUrl = `https://electisec.com${pathname}`;
-            window.location.href = newUrl;
-          }
-          return prev - 1;
-        });
-      }, 1000);
-      return () => clearInterval(interval);
+    if (typeof window !== 'undefined') {
+      let transformedPath = pathname;
+      if (transformedPath.startsWith('/pages/')) {
+        transformedPath = transformedPath.replace('/pages/', '/').toLowerCase();
+      } else {
+        transformedPath = transformedPath.toLowerCase();
+      }
+      const newUrl = `https://research.electisec.com/proxies${transformedPath}`;
+      window.location.href = newUrl;
     }
   }, [pathname]);
 

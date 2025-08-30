@@ -8,21 +8,15 @@ export default function RedirectPage() {
   const [countdown, setCountdown] = useState(3);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const slug = pathname;
-      if (!slug) return;
-
-      const interval = setInterval(() => {
-        setCountdown((prev) => {
-          if (prev === 1) {
-            clearInterval(interval);
-            window.location.href = `https://electisec.com/${slug}`;
-          }
-          return prev - 1;
-        });
-      }, 1000);
-
-      return () => clearInterval(interval);
+    if (typeof window !== 'undefined') {
+      let transformedPath = pathname;
+      if (!transformedPath) return;
+      if (transformedPath.startsWith('/pages/')) {
+        transformedPath = transformedPath.replace('/pages/', '/').toLowerCase();
+      } else {
+        transformedPath = transformedPath.toLowerCase();
+      }
+      window.location.href = `https://research.electisec.com/proxies${transformedPath}`;
     }
   }, [pathname]);
 
