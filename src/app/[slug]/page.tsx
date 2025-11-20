@@ -8,15 +8,15 @@ export default function RedirectPage() {
   const [countdown, setCountdown] = useState(3);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       let transformedPath = pathname;
       if (!transformedPath) return;
-      if (transformedPath.startsWith('/pages/')) {
-        transformedPath = transformedPath.replace('/pages/', '/').toLowerCase();
+      if (transformedPath.startsWith("/pages/")) {
+        transformedPath = transformedPath.replace("/pages/", "/").toLowerCase();
       } else {
         transformedPath = transformedPath.toLowerCase();
       }
-      window.location.href = `https://research.electisec.com/proxies${transformedPath}`;
+      window.location.href = `https://research.yaudit.dev/proxies${transformedPath}`;
     }
   }, [pathname]);
 

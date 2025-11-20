@@ -8,14 +8,14 @@ export default function Home() {
   const [countdown, setCountdown] = useState(3);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       let transformedPath = pathname;
-      if (transformedPath.startsWith('/pages/')) {
-        transformedPath = transformedPath.replace('/pages/', '/').toLowerCase();
+      if (transformedPath.startsWith("/pages/")) {
+        transformedPath = transformedPath.replace("/pages/", "/").toLowerCase();
       } else {
         transformedPath = transformedPath.toLowerCase();
       }
-      const newUrl = `https://research.electisec.com/proxies${transformedPath}`;
+      const newUrl = `https://research.yaudit.dev/proxies${transformedPath}`;
       window.location.href = newUrl;
     }
   }, [pathname]);
